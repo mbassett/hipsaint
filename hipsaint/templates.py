@@ -10,7 +10,7 @@ host_template = """
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>
 <p>{notificationcomment}</p>
-<p>  -{notificationauthor}</p>
+<p>&nbsp;&nbsp;-{notificationauthor}</p>
 """
 
 host_medium_template = "<strong>{timestamp} - {hostname} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{hostoutput}</pre>"
@@ -24,7 +24,7 @@ service_template = """
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
 <p>{notificationcomment}</p>
-<p>  -{notificationauthor}</p>
+<p>&nbsp;&nbsp;-{notificationauthor}</p>
 """
 
 service_medium_template = "<strong>{timestamp} - {servicedesc} on {hostalias} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{serviceoutput}</pre>"
