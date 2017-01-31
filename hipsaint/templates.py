@@ -3,24 +3,26 @@ Templates used to build hipchat api payloads
 """
 
 host_template = """
-<strong>{timestamp} - {hostname}  (nagios@{nagios_host})</strong><br/>
+<strong>{hostname}  (icinga@{nagios_host})</strong><br/>
 <strong>Type:</strong> {ntype}<br/>
 <strong>Host:</strong> {hostname} (<a href="{hostaddress}">{hostaddress}</a>)<br/>
-<strong>State:</strong> {state}<br>
+<strong>State:</strong> HOST {state}<br>
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>
+<p>{notificationcomment}<br>-{notificationauthor}</p>
 """
 
 host_medium_template = "<strong>{timestamp} - {hostname} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{hostoutput}</pre>"
 host_short_template = """[{ntype}] {hostname}: {hostoutput}"""
 
 service_template = """
-<strong>{timestamp} - {servicedesc} on {hostalias} (nagios@{nagios_host})</strong><br/>
+<strong>{servicedesc} on {hostalias} (icinga@{nagios_host})</strong><br/>
 <strong>Type:</strong> {ntype}<br/>
 <strong>Host:</strong> {hostalias} (<a href="{hostaddress}">{hostaddress}</a>)<br/>
-<strong>State:</strong> {state}<br/>
+<strong>State:</strong> SERVICE {state}<br/>
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
+<p>{notificationcomment}<br>-{notificationauthor}</p>
 """
 
 service_medium_template = "<strong>{timestamp} - {servicedesc} on {hostalias} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{serviceoutput}</pre>"

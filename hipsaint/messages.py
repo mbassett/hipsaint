@@ -117,18 +117,20 @@ class HipchatMessage(object):
         install_opener(opener)
 
     def get_host_context(self):
-        hostname, timestamp, ntype, hostaddress, state, hostoutput = self.inputs_list
+        hostname, timestamp, ntype, hostaddress, state, hostoutput, notificationauthor, notificationcomment = self.inputs_list
         return {
             'hostname': hostname,
             'timestamp': timestamp,
             'ntype': ntype,
             'hostaddress': hostaddress,
             'state': state,
-            'hostoutput': hostoutput
+            'hostoutput': hostoutput,
+            'notificationauthor': notificationauthor,
+            'notificationcomment': notificationcomment
         }
 
     def get_service_context(self):
-        servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput = self.inputs_list
+        servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput, notificationauthor, notificationcomment = self.inputs_list
         return {
             'servicedesc': servicedesc,
             'hostalias': hostalias,
@@ -137,6 +139,8 @@ class HipchatMessage(object):
             'hostaddress': hostaddress,
             'state': state,
             'serviceoutput': serviceoutput
+            'notificationauthor': notificationauthor,
+            'notificationcomment': notificationcomment
         }
 
     def render_message(self):
