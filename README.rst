@@ -81,22 +81,14 @@ Hosts : /etc/icinga2/scripts/hipchat-host-notification.sh ::
     
     #!/bin/bash
     
-    hipsaint --user=Icinga --token=<TOKEN> --room=<ROOM_ID> --type=host --inputs="$HOSTNAME|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$HOSTSTATE|$HOSTOUTPUT" -n
 
- or
- 
- hipsaint -V 2 --token=<TOKEN> --room=<ROOM_ID> --type=host --inputs="$HOSTNAME|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$HOSTSTATE|$HOSTOUTPUT" -n
-
-
+ hipsaint -V 2 --token=<TOKEN> --room=<ROOM_ID> --type=host --inputs="$HOSTNAME|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$HOSTSTATE|$HOSTOUTPUT|$NOTIFICATIONAUTHOR|$NOTIFICATIONCOMMENT" -n
 
 Services : /etc/icinga2/scripts/hipchat-service-notification.sh ::
 
     #!/bin/bash
 
-    hipsaint --user=Icinga --token=<TOKEN> --room=<ROOM_ID> --type=service --inputs="$SERVICEDESC|$HOSTALIAS|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$SERVICESTATE|$SERVICEOUTPUT" -n
-    
- or
-     hipsaint -V 2 --token=<TOKEN> --room=<ROOM_ID> --type=service --inputs="$SERVICEDESC|$HOSTALIAS|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$SERVICESTATE|$SERVICEOUTPUT" -n
+ hipsaint -V 2 --token=<TOKEN> --room=<ROOM_ID> --type=service --inputs="$SERVICEDESC|$HOSTALIAS|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$SERVICESTATE|$SERVICEOUTPUT|$NOTIFICATIONAUTHOR|$NOTIFICATIONCOMMENT" -n
  
 
 Then you need to tell Icinga to use those scripts :
@@ -122,6 +114,8 @@ Create a file called ``hipsaint.conf`` in your ``conf.d`` directory ::
          HOSTADDRESS = "$address$"
          HOSTSTATE = "$host.state$"
          HOSTOUTPUT = "$host.output$"
+         NOTIFICATIONAUTHOR = "$notification.author$"
+         NOTIFICATIONCOMMENT = "$notification.comment$"
       }
     }
 
@@ -138,6 +132,8 @@ Create a file called ``hipsaint.conf`` in your ``conf.d`` directory ::
         HOSTADDRESS = "$address$"
         SERVICESTATE = "$service.state$"
         SERVICEOUTPUT = "$service.output$"
+        NOTIFICATIONAUTHOR = "$notification.author$"
+        NOTIFICATIONCOMMENT = "$notification.comment$"
       }
     }
 
