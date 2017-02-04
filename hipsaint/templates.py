@@ -10,7 +10,7 @@ host_template = """
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>"""
 
-if "{notificationcomment}" != "":
+if """{notificationcomment}""" != "":
     host_template += "<p>{notificationcomment}<br>&nbsp;&nbsp;-{notificationauthor}</p>"
 
 
@@ -26,7 +26,7 @@ service_template = """
 <pre>{serviceoutput}</pre>
 """
 
-if "{notificationcomment}" != "":
+if """{notificationcomment}""" != "":
     service_template += "<p>{notificationcomment}<br>&nbsp;&nbsp;-{notificationauthor}</p>"
 
 
