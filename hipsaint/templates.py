@@ -5,7 +5,7 @@ Templates used to build hipchat api payloads
 host_template = """
 <strong>{hostname} {hostalias}  (icinga@{nagios_host})</strong><br/>
 <strong>Type:</strong> {ntype}<br/>
-<strong>Host:</strong> {hostname} (<a href="https://{nagios_host}/icingaweb2/monitoring/host/show?host={hostname}">{hostalias} ({hostname})</a>)<br/>
+<strong>Host:</strong> <a href="https://{nagios_host}/icingaweb2/monitoring/host/show?host={hostname}">{hostalias} ({hostname})</a><br/>
 <strong>State:</strong> HOST {state}<br>
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>"""
@@ -20,7 +20,7 @@ host_short_template = """[{ntype}] {hostname}: {hostoutput}"""
 service_template = """
 <strong>{servicedesc} on {hostalias} (icinga@{nagios_host})</strong><br/>
 <strong>Type:</strong> {ntype}<br/>
-<strong>Host:</strong> {hostname} (<a href="https://{nagios_host}/icingaweb2/monitoring/host/show?host={hostname}&service={servicedesc}">{hostalias} ({hostname}) {servicedesc}</a>)
+<strong>Host:</strong> <a href="https://{nagios_host}/icingaweb2/monitoring/host/show?host={hostname}&service={servicedesc}">{hostalias} ({hostname}) {servicedesc}</a>
 <strong>State:</strong> SERVICE {state}<br/>
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
