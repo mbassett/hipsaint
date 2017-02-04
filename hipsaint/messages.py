@@ -117,9 +117,10 @@ class HipchatMessage(object):
         install_opener(opener)
 
     def get_host_context(self):
-        hostname, timestamp, ntype, hostaddress, state, hostoutput, notificationauthor, notificationcomment = self.inputs_list
+        hostname, hostalias, timestamp, ntype, hostaddress, state, hostoutput, notificationauthor, notificationcomment = self.inputs_list
         return {
             'hostname': hostname,
+            'hostalias': hostalias,
             'timestamp': timestamp,
             'ntype': ntype,
             'hostaddress': hostaddress,
@@ -130,9 +131,10 @@ class HipchatMessage(object):
         }
 
     def get_service_context(self):
-        servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput, notificationauthor, notificationcomment = self.inputs_list
+        servicedesc, hostname, hostalias, timestamp, ntype, hostaddress, state, serviceoutput, notificationauthor, notificationcomment = self.inputs_list
         return {
             'servicedesc': servicedesc,
+            'hostname': hostname,
             'hostalias': hostalias,
             'timestamp': timestamp,
             'ntype': ntype,
@@ -162,8 +164,9 @@ class HipchatMessage(object):
             self.message_color = COLORS.get(ntype, self.default_color)
         else:
             self.message_color = COLORS.get(state, self.default_color)
-        nagios_host = socket.gethostname()
+        nagios_host = "icinga.ddc.io"
 
         template_context.update(nagios_host=nagios_host)
+
         template = templates[template_type]
         return template.format(**template_context)
