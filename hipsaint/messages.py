@@ -140,7 +140,7 @@ class HipchatMessage(object):
             'ntype': ntype,
             'hostaddress': hostaddress,
             'state': state,
-            'serviceoutput': serviceoutput
+            'serviceoutput': serviceoutput,
             'notificationauthor': notificationauthor,
             'notificationcomment': notificationcomment
         }

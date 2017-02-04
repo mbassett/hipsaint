@@ -11,7 +11,7 @@ host_template = """
 <pre>{hostoutput}</pre>"""
 
 if "{notificationcomment}" != "":
-    host_template += "<p>{notificationcomment}<br>-{notificationauthor}</p>"
+    host_template += "<p>{notificationcomment}<br>&nbsp;&nbsp;-{notificationauthor}</p>"
 
 
 host_medium_template = "<strong>{timestamp} - {hostname} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{hostoutput}</pre>"
@@ -27,7 +27,7 @@ service_template = """
 """
 
 if "{notificationcomment}" != "":
-    service_template += "<p>{notificationcomment}<br>-{notificationauthor}</p>"
+    service_template += "<p>{notificationcomment}<br>&nbsp;&nbsp;-{notificationauthor}</p>"
 
 
 service_medium_template = "<strong>{timestamp} - {servicedesc} on {hostalias} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{serviceoutput}</pre>"
